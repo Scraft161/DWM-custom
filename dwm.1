@@ -56,11 +56,11 @@ click on a tag label applies that tag to the focused window.
 click on a tag label adds/removes that tag to/from the focused window.
 .SS Keyboard commands
 .TP
-.B Mod1\-Shift\-Return
+.B Mod1\-Return
 Start
 .BR st(1).
 .TP
-.B Mod1\-p
+.B Mod1\-d
 Spawn
 .BR dmenu(1)
 for launching other programs.
@@ -89,9 +89,6 @@ Sets floating layout.
 .B Mod1\-m
 Sets monocle layout.
 .TP
-.B Mod1\-space
-Toggles between current and previous layout.
-.TP
 .B Mod1\-j
 Focus next window.
 .TP
@@ -101,7 +98,7 @@ Focus previous window.
 .B Mod1\-i
 Increase number of windows in master area.
 .TP
-.B Mod1\-d
+.B Mod1\-Shift\-i
 Decrease number of windows in master area.
 .TP
 .B Mod1\-l
@@ -110,10 +107,10 @@ Increase master area size.
 .B Mod1\-h
 Decrease master area size.
 .TP
-.B Mod1\-Return
+.B Mod1\-Space
 Zooms/cycles focused window to/from master area (tiled layouts only).
 .TP
-.B Mod1\-Shift\-c
+.B Mod1\-q
 Close focused window.
 .TP
 .B Mod1\-Shift\-space
@@ -140,7 +137,10 @@ View all windows with any tag.
 .B Mod1\-Control\-[1..n]
 Add/remove all windows with nth tag to/from the view.
 .TP
-.B Mod1\-Shift\-q
+.B Mod1\-e
+run exit script (suspend, shutdown, ...)
+.TP
+.B Mod1\-Shift\-e
 Quit dwm.
 .SS Mouse commands
 .TP
