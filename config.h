@@ -74,7 +74,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = scriptcmd } },
 	{ STARTKEY,                     XK_t,      spawn,          {.v = termcmd } },
-    { STARTKEY,                     XK_r,      spawn,          {.v = fmcmd } },
+	{ STARTKEY,                     XK_r,      spawn,          {.v = fmcmd } },
 	{ STARTKEY,                     XK_d,      spawn,          {.v = chatcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -109,8 +109,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-    { MODKEY,                       XK_e,      spawn,          {.v = exitcmd } },
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+	{ MODKEY,                       XK_e,      spawn,          {.v = exitcmd } },
+	{ MODKEY|ShiftMask,             XK_e,      quit,           {1} },
 };
 
 /* button definitions */
