@@ -158,10 +158,10 @@ View all windows with any tag.
 Add/remove all windows with nth tag to/from the view.
 .TP
 .B Mod1\-e
-run exit script (suspend, shutdown, ...)
+run exit script (suspend, shutdown, ...) \-\- This relies on a script and may not work depending on your setup.
 .TP
 .B Mod1\-Shift\-e
-Quit dwm.
+Quit dwm. \-\- this bypasses previously stated script and will work no matter what setup you have.
 .TP
 .B Mod1\-Control\-Shift\-q
 Restart dwm.
@@ -183,6 +183,8 @@ the following directories:
 .IP "3. $HOME/.dwm"
 .P
 The first existing directory is scanned for any of the autostart files below.
+.P
+Please note that this WILL NOT work if you start DWM behind a login manager (see known issues \- Scraft)
 .TP 15
 autostart.sh
 This file is started as a shell background process before dwm enters its handler
@@ -219,3 +221,14 @@ XToolkit/XAWT backend can recognize) or when using OpenJDK setting the environme
 .BR _JAVA_AWT_WM_NONREPARENTING=1 .
 .SH BUGS
 Send all bug reports with a patch to hackers@suckless.org.
+.SH KNOWN ISSUES \- SCRAFT
+This section covers all known issues in the Scraft\-custom version of DWM
+.B Exit script (Alt+e not working)
+This is likely because you don't have the script or are running DWM behind a login manager (refer to the login manager section for more info)
+.B Startup script not executing
+This is likely because you are running DWM behind a login manager (refer to the login manager section for more info)
+.B Login manager funkyness
+If you like running DWM behind a login manager you are free to do so, we recommend to go to the wiki page of the github repository to find out how to do so,
+.BR Please keep in mind that by doing this you WILL run into a couple issues that need working around
+.BR 1. You can not use the startup script funcionality included. in order to run commands on startup refer to the wiki which has an entire section dedicated to this.
+.br 2. You can not use the exit script. a workaround is currently under development and should be on the wiki once finished.

@@ -1,5 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
+/*
+ * This is the main config file for my custom DWM build, it currently contains a couple of small workarounds because of X11.
+ * If there is something you don't like about the way I do things send me an e-mail with your suggestion of how I could improve or create an issue on github.
+ * If you get shot down by me this probably means that my solution is faster or more consistent.
+ * If you don't like the way I do things, don't shit about my projects without decent basis, you are the one who has issues with my way of doing things, others might not.
+ * 
+ * Lastly, if you ever need to do any large scale division or similar (sqrt being an example). try to make a multiplication out of it as these are faster to solve for the computer.
+ */
+
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
@@ -7,7 +16,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "MesloLGS:size=10" };
@@ -64,22 +73,28 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *scriptcmd[]  = { "echo", "WIP", NULL };
+static const char *startcmd[]   = { "/home/scraft161/scripts/startmenu", NULL };	/* opens the little menu since XClickRoot doesn't want to work */
 static const char *webcmd[]     = { "librewolf", NULL};
-static const char *termcmd[]    = { "st", NULL };
+static const char *termcmd[]    = { "alacritty", NULL };							/* define your main terminal here (my default is alacritty, as it is a good configurable terminal) */
+static const char *term2cmd[]   = { "st", NULL };									/* Define your backup terminal here (should be st by default as most suckless ppl have it already) */
 static const char *fmcmd[]      = { "pcmanfm", NULL };
-static const char *exitcmd[]    = { "/home/scraft161/scripts/exitdwm", NULL };
+static const char *exitcmd[]    = { "/home/scraft161/scripts/exitdwm", NULL };		/* yes this is a hard link to my personal home folder, I am working on a workaround that avoids this */
 static const char *chatcmd[]    = { "discord", NULL };
 static const char *torrentcmd[] = { "qbittorrent", NULL};
+static const char *wallpapercmd[] = { "/home/scraft161/scripts/changebg", NULL };	/* if you don't like these links, fix them yourself */
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = scriptcmd } },
-	{ STARTKEY,                     XK_W,      spawn,          {.v = webcmd } },
-	{ STARTKEY,                     XK_t,      spawn,          {.v = termcmd } },
+	{ STARTKEY,                     XK_space,  spawn,          {.v = startcmd } },
+	{ STARTKEY,                     XK_w,      spawn,          {.v = webcmd } },
+	{ STARTKEY,                     XK_t,      spawn,          {.v = termcmd } },	/* the mnemonic here is Start Terminal and return (while a good key) does not fit in well */
+	{ STARTKEY,                     XK_Return, spawn,          {.v = term2cmd } },	/* backup terminal to open with super+enter */
 	{ STARTKEY,                     XK_f,      spawn,          {.v = fmcmd } },
 	{ STARTKEY,                     XK_d,      spawn,          {.v = chatcmd } },
-	{ STARTKEY,                     XK_q,      spawn,          {.v = torrentcmd} },
+	{ STARTKEY,                     XK_q,      spawn,          {.v = torrentcmd } },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = wallpapercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
